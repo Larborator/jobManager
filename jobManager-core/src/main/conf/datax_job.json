@@ -1,0 +1,47 @@
+{
+	"job":{
+		"content":[
+			{
+				"reader":{
+					"parameter":{
+						"password":"123456",
+						"connection":[
+							{
+								"querySql":[
+									"SELECT PLATFORM_USER_TBL.Name FROM PLATFORM_USER_TBL WHERE PLATFORM_USER_TBL.Name is not null"
+								],
+								"jdbcUrl":[
+									"jdbc:mysql://192.168.1.211:3306/test"
+								]
+							}
+						],
+						"username":"root"
+					},
+					"name":"mysqlreader"
+				},
+				"writer":{
+					"parameter":{
+						"path":"/user/hive/warehouse/mydb.db/testtable",
+						"fileName":"xxxx",
+						"column":[
+							{
+								"name":"name",
+								"type":"STRING"
+							}
+						],
+						"defaultFS":"hdfs://master:9000",
+						"writeMode":"append",
+						"fieldDelimiter":"\t",
+						"fileType":"text"
+					},
+					"name":"hdfswriter"
+				}
+			}
+		],
+		"setting":{
+			"speed":{
+				"channel":"3"
+			}
+		}
+	}
+}
